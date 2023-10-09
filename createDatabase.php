@@ -115,7 +115,8 @@ $sql = "CREATE TABLE IF NOT EXISTS MEALTRANSLATION(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_meal INT,
     id_language INT,
-    translation VARCHAR(100),
+    nameTranslation VARCHAR(100),
+    descriptionTranslation VARCHAR(100),
     FOREIGN KEY (id_meal) REFERENCES MEAL(id),
     FOREIGN KEY (id_language) REFERENCES LANGUAGE(id)
 )";
@@ -133,7 +134,7 @@ $sql = "CREATE TABLE IF NOT EXISTS INGREDIENTTRANSLATION(
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_ingredient INT,
     id_language INT,
-    translation VARCHAR(100),
+    nameTranslation VARCHAR(100),
     FOREIGN KEY (id_ingredient) REFERENCES INGREDIENT(id),
     FOREIGN KEY (id_language) REFERENCES LANGUAGE(id)
 )";
@@ -149,10 +150,10 @@ else{
 
 $sql = "CREATE TABLE IF NOT EXISTS TAGTRANSLATION(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    tag_id INT,
+    id_tag INT,
     id_language INT,
-    translation VARCHAR(100),
-    FOREIGN KEY (tag_id) REFERENCES TAG(id),
+    tagTranslation VARCHAR(100),
+    FOREIGN KEY (id_tag) REFERENCES TAG(id),
     FOREIGN KEY (id_language) REFERENCES LANGUAGE(id)
 )";
 
@@ -166,10 +167,10 @@ else{
 
 $sql = "CREATE TABLE IF NOT EXISTS CATEGORYTRANSLATION(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    category_id INT,
+    id_category INT,
     id_language INT,
-    translation VARCHAR(100),
-    FOREIGN KEY (category_id) REFERENCES CATEGORY(id),
+    nameTranslation VARCHAR(100),
+    FOREIGN KEY (id_category) REFERENCES CATEGORY(id),
     FOREIGN KEY (id_language) REFERENCES LANGUAGE(id)
 )";
 
