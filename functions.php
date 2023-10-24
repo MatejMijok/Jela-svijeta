@@ -1,5 +1,18 @@
 <?php
-function databaseConnect(){
+
+function createDatabase($servername, $username, $password, $database){
+    $conn = mysqli_connect($servername, $username, $password, $database);
+    $sql = "CREATE DATABASE IF NOT EXISTS $database";
+    if(mysqli_query($conn, $sql)){
+        echo "Database created successfully";
+    }
+    else{
+        echo "Error creating database: " . mysqli_error($conn);
+    }
+    return $conn;
+}
+
+function databaseConnect($servername, $username, $password){
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -10,16 +23,6 @@ function databaseConnect(){
     return $conn;
 }
 
-function createDatabase($conn, $database){
-    $sql = "CREATE DATABASE IF NOT EXISTS $database";
-    if(mysqli_query($conn, $sql)){
-        echo "Database created successfully";
-    }
-    else{
-        echo "Error creating database: " . mysqli_error($conn);
-    }
-    return $conn;
-}
 
 
 function createLanguage($conn){
